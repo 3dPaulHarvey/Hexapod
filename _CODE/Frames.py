@@ -1,4 +1,4 @@
-#Frames Practice
+#Frames Practice Problem
 import numpy as np
 import matplotlib.pyplot as plt
 
