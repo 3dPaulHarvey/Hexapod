@@ -12,7 +12,7 @@ void setup() {
   y = 200.0;
   z = 100.0;
 
-  Serial.begin(9600);
+  Serial.begin(115200);
   theta1 = atan2(y, x);
 
   float R = sqrt(x * x + y * y);

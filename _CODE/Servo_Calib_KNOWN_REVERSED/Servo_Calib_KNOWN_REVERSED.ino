@@ -8,8 +8,8 @@ Adafruit_PWMServoDriver pca = Adafruit_PWMServoDriver(0x40);
 #define POT_PIN  A0
 
 // ===== CALIBRATION VALUES (PER SERVO) =====
-float centerPulse     = 311.5;     // true mechanical 90°
-float pulsesPerDegree = 1.41;     // pulses per degree
+float centerPulse     = 297.0;     // true mechanical 90°
+float pulsesPerDegree = 2.14;     // pulses per degree
 
 // Safety limits (mechanical protection)
 int pulseMin = 150;
