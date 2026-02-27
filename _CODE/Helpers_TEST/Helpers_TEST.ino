@@ -48,15 +48,44 @@ void writeServoDegree(const ServoCal& servo, float deg) {
   float delta = deg - 90;
   if (servo.reversed) { delta = -delta; }
   float offset = delta * servo.pulsesPerDegree;
-  float pulse  = servo.centerPulse + offset;
+  float pulse = servo.centerPulse + offset;
   pulse = clampf(pulse, servo.minPulse, servo.maxPulse);
   uint16_t ticks = (uint16_t)(pulse + 0.5f);
 
   pwm.setPWM(servo.ch, 0, ticks);
 }
 /////////////IK
-void solveIK_andDrive(float x, float y, float z){
+void solveIK_andDrive(float x, float y, float z) {
   
+  hipAngle = atan2f(y, x);
+  hipAngle = degrees(hipAngle);
+  Serial.println(hipAngle);
+
+  float r = sqrtf((x * x) + (y * y));
+  float d = r - L;
+  float C = sqrtf((z * z) + (d * d));
+
+
+  float a = atan2f(d, -z);
+  float b = ((A * A) + (C * C) - (B * B)) / (2.0f * A * C);
+  b = constrain(b, -1.0f, 1.0f);;
+  b = acosf(b);
+  kneeAngle = a + b;
+  kneeAngle = degrees(kneeAngle);
+  Serial.println(kneeAngle);
+
+  float g = ((A * A) + (B * B) - (C * C)) / (2.0f * A * B);
+  g = constrain(g, -1.0f, 1.0f);
+  g = acosf(g);
+  footAngle = PI - g;
+  footAngle = degrees(footAngle);
+
+  Serial.println(footAngle);
+
+  Serial.println();
+
+  Serial.println();
+  delay(2000);
 }
 
 
@@ -70,9 +99,7 @@ void setup() {
   pwm.begin();
   pwm.setPWMFreq(PWM_FREQ_HZ);
   delay(10);
-
 }
 
 void loop() {
-  
 }

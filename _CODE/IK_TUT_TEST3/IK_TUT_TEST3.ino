@@ -21,7 +21,7 @@ void loop() {
   Serial.println();
 
   float r = sqrtf((x * x) + (y * y));
-  hipAngle = atan2(y, x);
+  hipAngle = atan2f(y, x);
   hipAngle = degrees(hipAngle);
   Serial.println(hipAngle);
 
@@ -31,7 +31,7 @@ void loop() {
   if (C > (A + B)) { Serial.println("unreachable"); } //too far
   if (C < (fabsf(A - B))) { Serial.println("unreachable"); } //too close
 
-  float a = atan2(d, -z);
+  float a = atan2f(d, -z);
 
   float b = ((A * A) + (C * C) - (B * B)) / (2 * A * C);
   b = constrain(b, -1.0f, 1.0f);;

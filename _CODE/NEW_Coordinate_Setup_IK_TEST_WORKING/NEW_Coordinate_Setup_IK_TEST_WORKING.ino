@@ -165,9 +165,6 @@ void loop() {
   // Stationary IK test point:
   // Try adjusting x forward/back and y more/less negative to see hip yaw changes.
 
-  //   float x = 30.0f;
-  // float y = -160.0f;
-  // float z = -20.0f;
   x = 0.0f;
   y = -160.0f;
   z = -20.0f;
